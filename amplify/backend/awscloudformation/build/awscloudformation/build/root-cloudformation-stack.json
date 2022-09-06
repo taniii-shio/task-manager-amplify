@@ -205,6 +205,20 @@
         }
       }
     },
+    "apitaskmanageramplify": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-taskmanageramplify-dev-232550-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "AppSyncApiName": "taskmanageramplify",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-taskmanageramplify-dev-232550-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/9fd44477cdca811ee6cf90e442a26c312ba2916c",
+          "env": "dev"
+        }
+      }
+    },
     "UpdateRolesWithIDPFunction": {
       "DependsOn": [
         "AuthRole",
