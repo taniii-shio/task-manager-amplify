@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { API, graphqlOperation } from "aws-amplify";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import dummyData from "../dummyData";
+
+import { listBoards } from "../graphql/queries";
 import Card from "./Card";
 
 const Main = () => {
-  const [data, setData] = useState(dummyData);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const listData = await API.graphql(graphqlOperation(listBoards));
+      setData(listData.data.listBoards.items);
+    };
+    fetchData();
+  }, []);
+  console.log(data);
 
   const onDragEnd = (result) => {
     const { source, destination } = result;
