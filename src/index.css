@@ -2,18 +2,46 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {
-  background: rgb(61, 93, 189);
-  background: linear-gradient(
-    126deg,
-    rgba(61, 93, 189, 1) 0%,
-    rgba(33, 63, 107, 1) 96%
-  );
-  height: 100vh;
+  background: #0d1117;
+  /* height: 100vh; */
   color: #e4e4e4;
   line-height: 1.5;
+  display: flex;
+}
+.app-wrapper {
+  padding: 60px 20px;
+  margin-left: 40px;
+}
+.app-title-wrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.app-title {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.app-username {
+  margin-bottom: 10px;
+  margin-left: 80px;
+}
+.app-signout {
+  margin-bottom: 10px;
+  margin-left: 40px;
+  cursor: pointer;
+  border: 1.2px solid #30363d;
+  border-radius: 8px;
+  background: none;
+  color: #e4e4e4;
+  padding: 4px 8px;
+  transition: opacity 0.2s;
+}
+.app-signout:hover {
+  opacity: 0.8;
 }
 
 .trello {
@@ -22,29 +50,84 @@ body {
 }
 
 .trello-section {
-  width: 400px;
-  /* border: 1px solid white; */
-  background: rgb(30, 25, 31);
-  background: linear-gradient(
-    126deg,
-    rgba(30, 25, 31, 1) 0%,
-    rgba(51, 45, 54, 1) 96%
-  );
+  width: 320px;
+  background: #010409;
+  border: 0.8px solid #21262d;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 4px;
   margin-left: 10px;
+}
+.add-column-section {
+  width: 320px;
+  height: 80px;
+  border: 0.8px solid #30363d;
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.add-column-section:hover {
+  opacity: 0.8;
+}
+
+.trello-section-title-wrapper {
+  position: relative;
+}
+.trello-section-delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+.trello-section-delete-button:hover {
+  opacity: 0.8;
 }
 
 .trello-section-title {
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 10px 0 20px;
+  margin: 0px 0 10px;
 }
 
 .card {
-  padding: 30px;
-  background: rgb(145, 137, 145);
-  background: linear-gradient(126deg, rgb(79, 73, 79) 0%, rgb(68, 64, 69) 96%);
-  border-radius: 10px;
+  padding: 30px 16px;
+  background: #21262d;
+  border-radius: 4px;
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+}
+.task-delete-button {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-delete-button:hover {
+  opacity: 0.8;
+}
+
+.add-task-card {
+  width: 300px;
+  height: 40px;
+  padding: 30px;
+  margin-top: 10px;
+  border: 0.8px solid #30363d;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.add-task-card:hover {
+  opacity: 0.8;
 }

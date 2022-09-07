@@ -9,16 +9,20 @@ Amplify.configure(awsExports);
 
 function App({ signOut, user }) {
   return (
-    <div style={{ padding: "50px" }}>
-      <h1 style={{ marginBottom: "20px" }}>Task Manager</h1>
-      {user ? (
-        <>
-          <h3>権限持ちユーザー:{user.username}</h3>
-          <button onClick={signOut}>サインアウト</button>
-        </>
-      ) : (
-        <h3>権限がありません</h3>
-      )}
+    <div className="app-wrapper">
+      <div className="app-title-wrapper">
+        <h1 className="app-title">Task Manager</h1>
+        {user ? (
+          <>
+            <h3 className="app-username">user : {user.username}</h3>
+            <button className="app-signout" onClick={signOut}>
+              SignOut
+            </button>
+          </>
+        ) : (
+          <h3>権限がありません</h3>
+        )}
+      </div>
       <Main />
     </div>
   );

@@ -1,7 +1,20 @@
 import React from "react";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Card = ({ children }) => {
-  return <div className="card">{children}</div>;
+  const handleDeleteTask = () => {
+    console.log("test");
+  };
+  return (
+    <>
+      <div className="card">
+        <p>{children}</p>
+        <div className="task-delete-button">
+          <AiOutlineDelete onClick={handleDeleteTask} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Card;
