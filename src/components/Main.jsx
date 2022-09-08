@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { AiOutlineDelete } from "react-icons/ai";
 
 import { listBoards } from "../graphql/queries";
 import Card from "./Card";
+import AddColumnModal from "./AddColumnModal";
+import AddTaskModal from "./AddTaskModal";
 
 const Main = () => {
   const [data, setData] = useState([]);
+  const [showAddColumnModal, setShowAddColumnModal] = useState(false);
+  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +20,13 @@ const Main = () => {
     };
     fetchData();
   }, []);
-  console.log(data);
+
+  const handleShowAddColumnModal = () => {
+    setShowAddColumnModal(true);
+  };
+  const handleShowAddTaskModal = () => {
+    setShowAddTaskModal(true);
+  };
 
   const onDragEnd = (result) => {
     const { source, destination } = result;
@@ -68,7 +79,10 @@ const Main = () => {
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
-                <div className="trello-section-title">{section.title}</div>
+                <div className="trello-section-title-wrapper">
+                  <div className="trello-section-title">{section.title}</div>
+                  <AiOutlineDelete className="trello-section-delete-button" />
+                </div>
                 <div className="trello-section-content">
                   {section.tasks.map((task, index) => (
                     <Draggable
@@ -92,11 +106,28 @@ const Main = () => {
                     </Draggable>
                   ))}
                   {provided.placeholder}
+                  <div
+                    className="add-task-card"
+                    onClick={handleShowAddTaskModal}
+                  >
+                    <p>+ Add task</p>
+                  </div>
                 </div>
               </div>
             )}
           </Droppable>
         ))}
+        <div className="add-column-section" onClick={handleShowAddColumnModal}>
+          <p>+ Add column</p>
+        </div>
+        <AddColumnModal
+          showFlag={showAddColumnModal}
+          setShowModal={setShowAddColumnModal}
+        />
+        <AddTaskModal
+          showFlag={showAddTaskModal}
+          setShowModal={setShowAddTaskModal}
+        />
       </div>
     </DragDropContext>
   );
