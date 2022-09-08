@@ -131,3 +131,7 @@ body {
 .add-task-card:hover {
   opacity: 0.8;
 }
+
+.button:hover {
+  opacity: 0.8;
+}
