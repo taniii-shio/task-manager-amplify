@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { AiOutlineDelete } from "react-icons/ai";
 
-import { listBoards } from "../graphql/queries";
+import { listColumns } from "../graphql/queries";
 import Card from "./Card";
 import AddColumnModal from "./AddColumnModal";
 import AddTaskModal from "./AddTaskModal";
@@ -14,12 +14,22 @@ const Main = () => {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const listData = await API.graphql(graphqlOperation(listBoards));
-      setData(listData.data.listBoards.items);
-    };
     fetchData();
-  }, []);
+  }, [showAddColumnModal]);
+
+  const fetchData = async () => {
+    try {
+      const listData = await API.graphql({
+        query: listColumns,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
+      });
+      setData(listData.data.listColumns.items);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  console.log(data);
 
   const handleShowAddColumnModal = () => {
     setShowAddColumnModal(true);

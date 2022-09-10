@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "taskmanageramplify",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authtaskmanageramplifyb30abd98",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

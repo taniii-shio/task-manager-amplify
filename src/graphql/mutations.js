@@ -1,12 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBoard = /* GraphQL */ `
-  mutation CreateBoard(
-    $input: CreateBoardInput!
-    $condition: ModelBoardConditionInput
+export const createColumn = /* GraphQL */ `
+  mutation CreateColumn(
+    $input: CreateColumnInput!
+    $condition: ModelColumnConditionInput
   ) {
-    createBoard(input: $input, condition: $condition) {
+    createColumn(input: $input, condition: $condition) {
       id
       title
       tasks {
@@ -15,15 +15,19 @@ export const createBoard = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
-export const updateBoard = /* GraphQL */ `
-  mutation UpdateBoard(
-    $input: UpdateBoardInput!
-    $condition: ModelBoardConditionInput
+export const updateColumn = /* GraphQL */ `
+  mutation UpdateColumn(
+    $input: UpdateColumnInput!
+    $condition: ModelColumnConditionInput
   ) {
-    updateBoard(input: $input, condition: $condition) {
+    updateColumn(input: $input, condition: $condition) {
       id
       title
       tasks {
@@ -32,15 +36,19 @@ export const updateBoard = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
-export const deleteBoard = /* GraphQL */ `
-  mutation DeleteBoard(
-    $input: DeleteBoardInput!
-    $condition: ModelBoardConditionInput
+export const deleteColumn = /* GraphQL */ `
+  mutation DeleteColumn(
+    $input: DeleteColumnInput!
+    $condition: ModelColumnConditionInput
   ) {
-    deleteBoard(input: $input, condition: $condition) {
+    deleteColumn(input: $input, condition: $condition) {
       id
       title
       tasks {
@@ -49,6 +57,10 @@ export const deleteBoard = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
