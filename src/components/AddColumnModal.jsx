@@ -1,9 +1,42 @@
-import React from "react";
+import { API } from "aws-amplify";
+import React, { useState } from "react";
+
+import { createColumn } from "../graphql/mutations";
 
 const AddColumnModal = (props) => {
+  const [columnState, setColumnState] = useState("");
+
   const closeModal = () => {
     props.setShowModal(false);
   };
+
+  console.log(columnState);
+
+  const addColumn = async () => {
+    try {
+      if (!columnState) return;
+      await API.graphql({
+        query: createColumn,
+        variables: {
+          input: {
+            title: columnState,
+            tasks: [
+              // {
+              //   id: 1,
+              //   title: "卒論",
+              // },
+            ],
+          },
+        },
+        authMode: "AMAZON_COGNITO_USER_POOLS",
+      });
+      setColumnState("");
+      closeModal();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       {props.showFlag ? ( // showFlagがtrueだったらModalを表示する
@@ -11,8 +44,17 @@ const AddColumnModal = (props) => {
           <div id="modalContent" style={modalContent}>
             <h3 style={inputTitle}>Column name</h3>
             <div style={inputWrapper}>
-              <input style={input} placeholder="add column name!" />
-              <button style={submitButton} className="button">
+              <input
+                style={input}
+                value={columnState}
+                placeholder="add column name!"
+                onChange={(e) => setColumnState(e.target.value)}
+              />
+              <button
+                style={submitButton}
+                className="button"
+                onClick={addColumn}
+              >
                 Submit
               </button>
             </div>

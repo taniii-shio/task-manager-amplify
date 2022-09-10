@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBoard = /* GraphQL */ `
-  subscription OnCreateBoard($filter: ModelSubscriptionBoardFilterInput) {
-    onCreateBoard(filter: $filter) {
+export const onCreateColumn = /* GraphQL */ `
+  subscription OnCreateColumn($owner: String) {
+    onCreateColumn(owner: $owner) {
       id
       title
       tasks {
@@ -12,12 +12,16 @@ export const onCreateBoard = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
-export const onUpdateBoard = /* GraphQL */ `
-  subscription OnUpdateBoard($filter: ModelSubscriptionBoardFilterInput) {
-    onUpdateBoard(filter: $filter) {
+export const onUpdateColumn = /* GraphQL */ `
+  subscription OnUpdateColumn($owner: String) {
+    onUpdateColumn(owner: $owner) {
       id
       title
       tasks {
@@ -26,12 +30,16 @@ export const onUpdateBoard = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
-export const onDeleteBoard = /* GraphQL */ `
-  subscription OnDeleteBoard($filter: ModelSubscriptionBoardFilterInput) {
-    onDeleteBoard(filter: $filter) {
+export const onDeleteColumn = /* GraphQL */ `
+  subscription OnDeleteColumn($owner: String) {
+    onDeleteColumn(owner: $owner) {
       id
       title
       tasks {
@@ -40,6 +48,10 @@ export const onDeleteBoard = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
   }
 `;
