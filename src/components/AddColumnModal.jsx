@@ -4,22 +4,22 @@ import React, { useState } from "react";
 import { createColumn } from "../graphql/mutations";
 
 const AddColumnModal = (props) => {
-  const [columnState, setColumnState] = useState("");
+  const [columnTitle, setColumnTitle] = useState("");
 
   const closeModal = () => {
     props.setShowModal(false);
   };
 
-  console.log(columnState);
+  console.log(columnTitle);
 
   const addColumn = async () => {
     try {
-      if (!columnState) return;
+      if (!columnTitle) return;
       await API.graphql({
         query: createColumn,
         variables: {
           input: {
-            title: columnState,
+            title: columnTitle,
             tasks: [
               // {
               //   id: 1,
@@ -30,7 +30,7 @@ const AddColumnModal = (props) => {
         },
         authMode: "AMAZON_COGNITO_USER_POOLS",
       });
-      setColumnState("");
+      setColumnTitle("");
       closeModal();
     } catch (err) {
       console.log(err);
@@ -46,9 +46,9 @@ const AddColumnModal = (props) => {
             <div style={inputWrapper}>
               <input
                 style={input}
-                value={columnState}
+                value={columnTitle}
                 placeholder="add column name!"
-                onChange={(e) => setColumnState(e.target.value)}
+                onChange={(e) => setColumnTitle(e.target.value)}
               />
               <button
                 style={submitButton}
