@@ -13,9 +13,11 @@ const Main = () => {
   const [showAddColumnModal, setShowAddColumnModal] = useState(false);
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
+  const [targetColumnId, setTargetColumnId] = useState("");
+
   useEffect(() => {
     fetchData();
-  }, [showAddColumnModal]);
+  }, [showAddColumnModal, showAddTaskModal]);
 
   const fetchData = async () => {
     try {
@@ -34,8 +36,9 @@ const Main = () => {
   const handleShowAddColumnModal = () => {
     setShowAddColumnModal(true);
   };
-  const handleShowAddTaskModal = () => {
+  const handleShowAddTaskModal = (e) => {
     setShowAddTaskModal(true);
+    setTargetColumnId(e.target.id);
   };
 
   const onDragEnd = (result) => {
@@ -118,7 +121,8 @@ const Main = () => {
                   {provided.placeholder}
                   <div
                     className="add-task-card"
-                    onClick={handleShowAddTaskModal}
+                    id={section.id}
+                    onClick={(e) => handleShowAddTaskModal(e)}
                   >
                     <p>+ Add task</p>
                   </div>
@@ -137,6 +141,7 @@ const Main = () => {
         <AddTaskModal
           showFlag={showAddTaskModal}
           setShowModal={setShowAddTaskModal}
+          targetColumnId={targetColumnId}
         />
       </div>
     </DragDropContext>
