@@ -105,8 +105,8 @@ body {
 }
 .task-delete-button {
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;

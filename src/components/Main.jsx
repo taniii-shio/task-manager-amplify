@@ -147,7 +147,12 @@ const Main = () => {
                               opacity: snapshot.isDragging ? "0.5" : "1",
                             }}
                           >
-                            <Card>{task.title}</Card>
+                            <Card
+                              task={task}
+                              columnId={section.id}
+                              columnName={section.title}
+                              fetchDataFunc={fetchData}
+                            />
                           </div>
                         )}
                       </Draggable>
